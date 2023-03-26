@@ -29,12 +29,14 @@ def lambda_handler(event, context):
       items         = response['Items']
       response_body = {"items": items}
     else:
+      timestamp = str(datetime.now())
       table.put_item(
         Item={
-          "resource"   : event["resource"],
-          "path"       : event["path"],
-          "user"       : event["pathParameters"]["user"],
-          "date_added" : str(datetime.now())
+          "request_key" : f'{event["pathParameters"]["user"]}-{timestamp}',
+          "resource"    : event["resource"],
+          "path"        : event["path"],
+          "user"        : event["pathParameters"]["user"],
+          "date_added"  : timestamp
         }
       )
       response_body = {"message": "Item added correctly."}
