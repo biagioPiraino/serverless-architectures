@@ -1,3 +1,4 @@
+# Create a dynamo db resource
 resource "aws_dynamodb_table" "dynamo_db_table" {
   name     = "api_requests"
   hash_key = "request_key"
@@ -32,3 +33,7 @@ resource "aws_dynamodb_table" "dynamo_db_table" {
     type = "S"
   }
 }
+
+# Output information about dynamo db
+output "dynamo_arn" { value = aws_dynamodb_table.dynamo_db_table.arn }
+output "dynamo_id" { value = aws_dynamodb_table.dynamo_db_table.id }
