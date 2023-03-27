@@ -12,26 +12,6 @@ resource "aws_dynamodb_table" "dynamo_db_table" {
     name = "request_key"
     type = "S"
   }
-
-  attribute {
-    name = "resource"
-    type = "S"
-  }
-
-  attribute {
-    name = "path"
-    type = "S"
-  }
-
-  attribute {
-    name = "user"
-    type = "S"
-  }
-
-  attribute {
-    name = "date_added"
-    type = "S"
-  }
 }
 
 # Output information about dynamo db
