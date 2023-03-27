@@ -64,8 +64,8 @@ resource "aws_lambda_permission" "allow_gateway_to_invoke" {
   # The source_arn references the execution arn of the API gateway.
   # For this, we need to specify the stage/HTTP-method/resource-path suffix
   # to grant a more granular permission to invoke the Lambda function from the gateway.
-  # Here, the */*/requests part allows invocation from every stage on resource path 'requests', for any HTTP method.
-  source_arn   = "${aws_apigatewayv2_api.api_gateway.execution_arn}/*/*/requests"
+  # Here, the /* allows invocation from every stage, HTTP method or resource path.
+  source_arn   = "${aws_apigatewayv2_api.api_gateway.execution_arn}/*"
   statement_id = "AllowAPIGatewayToInvokeFunction"
 }
 
