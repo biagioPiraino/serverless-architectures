@@ -2,9 +2,6 @@ from datetime import datetime
 import json, boto3
 
 def lambda_handler(event, context):
-  # Print the event structure
-  print(event)
-
   # Define values to return
   response_body: dict
   status: int
@@ -44,7 +41,7 @@ def lambda_handler(event, context):
     status = 200
   except Exception as err:
     status = 400
-    response_body = {"message": f"An {type(err)} exception has been raised."}
+    response_body = {"message": f"Error Message: {err.response['Error']['Message']}"}
 
   response = {
     "statusCode" : status,
