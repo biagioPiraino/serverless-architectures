@@ -20,16 +20,16 @@
     <div class="central-container">
       <div class="count-container">
         <h3>
-          Number of POST API requests:
+          Number of POST API requests: {{requests}}
         </h3>
       </div>
       <div class="buttons">
-        <a href="#">
+        <a href="{{url_for('get_all_requests')}}">
           <button>
             GET
           </button>
         </a>
-        <a href="/">
+        <a href="{{url_for('index')}}">
           <button>
             GO BACK
           </button>
